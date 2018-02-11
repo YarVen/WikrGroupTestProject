@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,21 +39,15 @@ public class ProductPage {
     @FindBy(xpath = "//*[@id='tab_content']//tr[13]/td[2]")
     private WebElement phoneRAM;
 
-    @FindBy(xpath = "//*[@id='tab_content']//tr[54]/td[2]//span")
-//    @FindBy(xpath = "//div[contains(text(),'Вес, г')]/../..//span")
+    @FindBy(xpath = "//div[contains(text(),'Вага, г')]//..//..//span")
     private WebElement phoneWeight;
 
-    public ProductPage checkProductParameters(String diagonal, String ram, String weight){
+    public ProductPage checkProductParameters(String diagonal, String ram, String weight) throws InterruptedException {
         characteristics.click();
-        try {
-            Assert.assertEquals(phoneDiagonal.getText(), diagonal);
-            Assert.assertEquals(phoneRAM.getText(), ram);
-            Assert.assertEquals(phoneWeight.getText(), weight);
-        } catch (StaleElementReferenceException ex){
-            Assert.assertEquals(phoneDiagonal.getText(), diagonal);
-            Assert.assertEquals(phoneRAM.getText(), ram);
-            Assert.assertEquals(phoneWeight.getText(), weight);
-        }
+        Thread.sleep(2000);
+        Assert.assertEquals(phoneDiagonal.getText(), diagonal);
+        Assert.assertEquals(phoneRAM.getText(), ram);
+        Assert.assertEquals(phoneWeight.getText(), weight);
         return new ProductPage(driver);
     }
 

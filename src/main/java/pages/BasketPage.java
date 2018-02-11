@@ -6,12 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import utils.PropertiesReader;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class BasketPage {
@@ -35,8 +29,8 @@ public class BasketPage {
     public BasketPage checkAvailableProducts() {
         ArrayList<WebElement> elements = (ArrayList<WebElement>) driver.findElements(By.xpath("//a[@class = 'novisited cart-i-title-link' and @name = 'goods-link']"));
 
-        Assert.assertEquals(elements.get(0).getText(), "Apple iPhone 7 Plus 32GB Jet Black");
-        Assert.assertEquals(elements.get(1).getText(), "Apple iPhone 7 32GB Silver");
+        Assert.assertEquals(elements.get(0).getText(), "Apple iPhone 7 Plus 32GB Black");
+        Assert.assertEquals(elements.get(1).getText(), "Apple iPhone 7 32GB Jet Black");
 
         return new BasketPage(driver);
     }

@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
 
-    public WebDriver driver;
-    public WebDriverWait wait;
-    String url;
+    private WebDriver driver;
+    private WebDriverWait wait;
+    private String url;
 
     public WebDriver setUpDriver() throws IOException {
         PropertiesReader pr = new PropertiesReader();
@@ -25,11 +25,9 @@ public class DriverManager {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
         driver.manage().window().maximize();
-        //driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         driver.get(url);
         return driver;
     }
-
 
 }

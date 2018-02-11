@@ -30,8 +30,9 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public ProductPage searchProduct(String productModel){
+    public ProductPage searchProduct(String productModel) {
         searchField.sendKeys(productModel);
+        searchButton.isDisplayed();
         searchButton.click();
         firstSearchItem.click();
         return new ProductPage(driver);
